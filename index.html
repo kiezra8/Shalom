@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shalom — Educate. Empower. Illuminate.</title>
+    <meta name="description"
+        content="Join Shalom — providing quality education, nutrition, medical care and digital skills to children in rural Uganda. Partner with us today.">
+    <meta name="author" content="Shalom">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --empire-black: #000000;
+            --empire-white: #FFFFFF;
+            --empire-gold: #C9A961;
+            --empire-blue: #2563eb;
+            --empire-gray: #F8F8F8;
+            --empire-dark-gray: #2C2C2C;
+            --empire-border: #E0E0E0;
+            --empire-text: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, sans-serif;
+            font-weight: 400;
+            background: var(--empire-white);
+            color: var(--empire-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .brand-text {
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--empire-black);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes slide {
+
+            0%,
+            30% {
+                transform: translateX(0);
+            }
+
+            33%,
+            63% {
+                transform: translateX(-33.333%);
+            }
+
+            66%,
+            96% {
+                transform: translateX(-66.666%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-slide {
+            animation: slide 18s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .animate-slide-in-left {
+            animation: slideInLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        .animate-pulse-slow {
+            animation: pulse 2.5s ease-in-out infinite;
+        }
+
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 40s linear infinite;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--empire-gray);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #aaa;
+            border-radius: 3px;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* ===== HEADER ===== */
+        #site-header {
+            position: sticky;
+            top: 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            z-index: 50;
+        }
+
+        /* ===== BOTTOM NAV ===== */
+        #bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            z-index: 50;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            padding: 10px 4px 8px;
+            color: #9ca3af;
+            cursor: pointer;
+            transition: color 0.2s;
+            font-size: 9px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            gap: 3px;
+            background: none;
+            border: none;
+        }
+
+        .nav-item.active {
+            color: #000;
+        }
+
+        .nav-item.active svg {
+            filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
+        }
+
+        /* ===== VIEWS ===== */
+        .view {
+            display: none;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        /* ===== CARD ===== */
+        .empire-card {
+            background: white;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .empire-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
+        }
+
+        /* ===== PROGRAMME CARD ===== */
+        .prog-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--empire-blue);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 2px;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* ===== IMPACT STAT ===== */
+        .stat-card {
+            text-align: center;
+            padding: 24px 16px;
+            background: white;
+            border: 1px solid #f3f4f6;
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress-bar {
+            height: 8px;
+            background: #f1f5f9;
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--empire-blue);
+            border-radius: 99px;
+            transition: width 1s;
+        }
+
+        /* ===== DONATE BUTTON ===== */
+        .btn-primary {
+            background: #000;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #222;
+        }
+
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+
+        /* floating WhatsApp removed */
+        .contact-action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 18px;
+            border-radius: 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .contact-action-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* ===== SIDEBAR ===== */
+        #sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 60;
+            display: none;
+            animation: fadeIn 0.2s;
+        }
+
+        #sidebar-overlay.open {
+            display: block;
+        }
+
+        #sidebar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 280px;
+            background: white;
+            overflow-y: auto;
+            animation: slideInLeft 0.3s ease;
+        }
+
+        /* ===== TOAST ===== */
+        #toast {
+            position: fixed;
+            bottom: 90px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: #111;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 99px;
+            font-size: 13px;
+            font-family: 'Montserrat', sans-serif;
+            z-index: 100;
+            opacity: 0;
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+
+        #toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ===== PROFILE SHEET ===== */
+        #profile-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 80;
+            display: none;
+            animation: fadeIn 0.2s;
+        }
+
+        #profile-overlay.open {
+            display: flex;
+            align-items: flex-end;
+        }
+
+        #profile-sheet {
+            width: 100%;
+            max-width: 560px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px 24px 0 0;
+            overflow: hidden;
+            animation: slideUpSheet 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes slideUpSheet {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .profile-hero {
+            position: relative;
+            height: 260px;
+            width: 100%;
+        }
+
+        .profile-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+
+        .profile-badge {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            font-size: 8px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 4px 12px;
+            border-radius: 99px;
+            margin-bottom: 6px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .wa-support-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 14px;
+            padding: 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            width: 100%;
+        }
+
+        .wa-support-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* scholar card */
+        .scholar-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .scholar-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        /* marquee card */
+        .mq-card {
+            width: 220px;
+            margin-right: 16px;
+            flex-shrink: 0;
+            background: white;
+            border: 1px solid #f0f0f0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-black antialiased pb-16">
+
+    <!-- ===== SIDEBAR ===== -->
+    <div id="sidebar-overlay">
+        <div id="sidebar">
+            <div class="p-5 border-b flex items-center justify-between">
+                <span class="font-black text-sm uppercase tracking-widest"
+                    style="font-family:'Montserrat',sans-serif">Shalom</span>
+                <button onclick="closeSidebar()" class="p-1 hover:bg-gray-100 rounded">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <nav class="p-4 space-y-1">
+                <button onclick="goTab('home');closeSidebar();"
+                    class="w-full text-left px-4 py-3 text-sm font-semibold hover:bg-gray-50 rounded uppercase tracking-wider"
+                    style="font-family:'Montserrat',sans-serif">Home</button>
+                <button onclick="goTab('scholars');closeSidebar();"
+                    class="w-full text-left px-4 py-3 text-sm font-semibold hover:bg-gray-50 rounded uppercase tracking-wider"
+                    style="font-family:'Montserrat',sans-serif">Our Scholars</button>
+                <button onclick="goTab('impact');closeSidebar();"
+                    class="w-full text-left px-4 py-3 text-sm font-semibold hover:bg-gray-50 rounded uppercase tracking-wider"
+                    style="font-family:'Montserrat',sans-serif">Our Impact</button>
+                <button onclick="goTab('partner');closeSidebar();"
+                    class="w-full text-left px-4 py-3 text-sm font-semibold hover:bg-gray-50 rounded uppercase tracking-wider"
+                    style="font-family:'Montserrat',sans-serif">Partner / Donate</button>
+                <div class="border-t my-3"></div>
+                <div class="px-4 py-2">
+                    <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-2"
+                        style="font-family:'Montserrat',sans-serif">Contact</p>
+                    <a href="tel:+256700000000" class="flex items-center gap-2 text-sm text-gray-700 py-1"><i
+                            data-lucide="phone" class="w-4 h-4"></i>+256 700 000 000</a>
+                    <a href="mailto:info@shalominitiative.org"
+                        class="flex items-center gap-2 text-sm text-gray-700 py-1"><i data-lucide="mail"
+                            class="w-4 h-4"></i>info@shalominitiative.org</a>
+                </div>
+            </nav>
+            <div class="p-4 border-t">
+                <p class="text-xs text-gray-400 text-center" style="font-family:'Montserrat',sans-serif">© 2025 Shalom
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header id="site-header">
+        <div class="px-3 py-2 flex items-center justify-between max-w-7xl mx-auto">
+            <button onclick="openSidebar()" class="p-2 hover:bg-gray-50 transition-colors -ml-2">
+                <i data-lucide="menu" class="w-5 h-5 text-gray-900"></i>
+            </button>
+
+            <div class="absolute left-1/2 -translate-x-1/2 cursor-pointer" onclick="goTab('home')">
+                <div class="flex flex-col items-center">
+                    <span class="text-lg font-black leading-none tracking-tighter"
+                        style="font-family:'Montserrat',sans-serif">SHALOM</span>
+                    <span class="text-[8px] font-bold tracking-[0.25em] text-blue-600 uppercase"
+                        style="font-family:'Montserrat',sans-serif">Uganda</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-1">
+                <button onclick="goTab('impact')" class="p-2 hover:bg-gray-50 transition-colors">
+                    <i data-lucide="bar-chart-2" class="w-5 h-5 text-gray-900"></i>
+                </button>
+                <button onclick="goTab('partner')" class="p-2 hover:bg-gray-50 transition-colors -mr-2">
+                    <i data-lucide="heart" class="w-5 h-5 text-gray-900"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main id="app-content">
+
+        <!-- HOME VIEW -->
+        <div id="view-home" class="view active animate-fade-in">
+
+            <!-- Hero Carousel -->
+            <div class="relative h-[420px] sm:h-[560px] w-full overflow-hidden">
+                <div class="flex w-[300%] h-full animate-slide">
+                    <!-- Slide 1 -->
+                    <div class="w-1/3 relative h-full">
+                        <img src="Shalompics/IMG-20251211-WA0000.jpg"
+                            class="absolute inset-0 w-full h-full object-cover" alt="Quality Learning">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end pl-6 pb-8">
+                            <div class="animate-slide-in-left text-left">
+                                <h1
+                                    class="text-xs sm:text-sm font-bold text-white tracking-[0.2em] mb-2 drop-shadow-md uppercase">
+                                    Educate. Empower. Illuminate.
+                                </h1>
+                                <p class="text-white/90 text-[10px] font-light tracking-wider drop-shadow-md">
+                                    Bringing quality education to children in rural Uganda since 2020.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="w-1/3 relative h-full">
+                        <img src="Shalompics/IMG-20251211-WA0001.jpg"
+                            class="absolute inset-0 w-full h-full object-cover" alt="Nutrition Program">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end pl-6 pb-8">
+                            <div class="text-left">
+                                <h2
+                                    class="text-xs sm:text-sm font-bold text-white tracking-[0.2em] mb-2 drop-shadow-md uppercase">
+                                    500+ Children Supported
+                                </h2>
+                                <p class="text-white/90 text-[10px] font-light tracking-wider drop-shadow-md">
+                                    Nutrition, medical care & digital skills — every day.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="w-1/3 relative h-full">
+                        <img src="Shalompics/IMG-20251211-WA0002.jpg"
+                            class="absolute inset-0 w-full h-full object-cover" alt="Digital Skills">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end pl-6 pb-8">
+                            <div class="text-left">
+                                <h2
+                                    class="text-xs sm:text-sm font-bold text-white tracking-[0.2em] mb-2 drop-shadow-md uppercase">
+                                    Partner With Us Today
+                                </h2>
+                                <p class="text-white/90 text-[10px] font-light tracking-wider drop-shadow-md">
+                                    Your support changes a child's future forever.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Premium Feature Grid (2-1-2) -->
+            <div class="bg-white py-2" id="programmes-grid">
+                <div class="max-w-7xl mx-auto px-1 sm:px-2">
+
+                    <!-- Top Row: 2 images -->
+                    <div class="grid grid-cols-2 gap-1 mb-1">
+                        <div class="relative group aspect-[3/4] overflow-hidden cursor-pointer"
+                            onclick="goTab('scholars')">
+                            <img src="Shalompics/IMG-20251224-WA0004.jpg"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                alt="Quality Learning">
+                            <div class="absolute bottom-6 left-0 right-0 flex justify-center">
+                                <div class="bg-white px-6 py-3 shadow-lg">
+                                    <h3
+                                        class="text-xs sm:text-sm font-bold text-black uppercase tracking-widest text-center">
+                                        Quality Learning</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative group aspect-[3/4] overflow-hidden cursor-pointer"
+                            onclick="goTab('scholars')">
+                            <img src="Shalompics/IMG-20251224-WA0008.jpg"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                alt="Nutrition">
+                            <div class="absolute bottom-6 left-0 right-0 flex justify-center">
+                                <div class="bg-white px-6 py-3 shadow-lg">
+                                    <h3
+                                        class="text-xs sm:text-sm font-bold text-black uppercase tracking-widest text-center">
+                                        Nutrition Program</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Middle Row: 1 Big -->
+                    <div class="relative group h-[380px] sm:h-[480px] overflow-hidden cursor-pointer mb-1 w-full"
+                        onclick="goTab('impact')">
+                        <img src="Shalompics/IMG-20251224-WA0015.jpg"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            alt="Medical Care">
+                        <div class="absolute bottom-8 left-0 right-0 flex justify-center">
+                            <div class="bg-white px-8 py-3 shadow-xl">
+                                <h3
+                                    class="text-sm sm:text-base font-bold text-black uppercase tracking-widest text-center">
+                                    Medical Care</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Row: 2 images -->
+                    <div class="grid grid-cols-2 gap-1">
+                        <div class="relative group aspect-[3/4] overflow-hidden cursor-pointer"
+                            onclick="goTab('impact')">
+                            <img src="https://images.unsplash.com/photo-1524061511843-fd43443e3cb2?auto=format&fit=crop&q=80&w=600"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                alt="Digital Skills">
+                            <div class="absolute bottom-6 left-0 right-0 flex justify-center">
+                                <div class="bg-white px-6 py-3 shadow-lg">
+                                    <h3
+                                        class="text-xs sm:text-sm font-bold text-black uppercase tracking-widest text-center">
+                                        vocational skills</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative group aspect-[3/4] overflow-hidden cursor-pointer"
+                            onclick="goTab('impact')">
+                            <img src="Shalompics/IMG-20251224-WA0016.jpg"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                alt="Sports & Arts">
+                            <div class="absolute bottom-6 left-0 right-0 flex justify-center">
+                                <div class="bg-white px-6 py-3 shadow-lg">
+                                    <h3
+                                        class="text-xs sm:text-sm font-bold text-black uppercase tracking-widest text-center">
+                                        Sports &amp; Arts</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scholars Marquee -->
+            <div class="bg-white py-4 px-2 sm:px-3">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-3">
+                        <h2 class="text-2xl sm:text-3xl font-bold uppercase tracking-wider mb-1">OUR SCHOLARS</h2>
+                        <p class="text-sm text-gray-600 tracking-widest">meet the children you're supporting</p>
+                    </div>
+                    <div class="overflow-hidden">
+                        <div class="animate-marquee py-3">
+                            <!-- Cards x2 for seamless loop -->
+                            <div id="marquee-inner"></div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button onclick="goTab('scholars')" class="btn-primary px-8 py-3 text-xs rounded-sm">View All
+                            Scholars</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vision / Impact Video -->
+            <div class="bg-white py-4 px-2 sm:px-3">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-4">
+                        <h2 class="text-2xl sm:text-3xl font-bold uppercase tracking-wider mb-1">OUR VISION</h2>
+                        <p class="text-sm text-gray-600 tracking-widest">see the difference we're making</p>
+                    </div>
+                    <div class="relative h-[340px] sm:h-[460px] bg-black rounded-lg overflow-hidden shadow-sm">
+                        <video src="Shalompics/VID-20251224-WA0023.mp4" class="w-full h-full object-cover" autoplay
+                            muted loop playsinline>
+                        </video>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- OUR IMPACT (Moved from dedicated view) -->
+            <div id="impact-section" class="bg-white py-8">
+                <div class="px-4 mb-6 text-center">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-1 uppercase tracking-wider">Our Impact</h2>
+                    <p class="text-sm text-gray-500 tracking-wide">The power of partnership in action.</p>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-3 mb-8 px-4 max-w-7xl mx-auto">
+                    <div class="stat-card rounded-xl shadow-sm border border-gray-50">
+                        <p class="text-2xl sm:text-4xl font-black text-blue-600">500+</p>
+                        <p class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-widest mt-1 font-bold">
+                            Children</p>
+                    </div>
+                    <div class="stat-card rounded-xl shadow-sm border border-gray-50">
+                        <p class="text-2xl sm:text-4xl font-black text-blue-600">5</p>
+                        <p class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-widest mt-1 font-bold">
+                            Programmes</p>
+                    </div>
+                    <div class="stat-card rounded-xl shadow-sm border border-gray-50">
+                        <p class="text-2xl sm:text-4xl font-black text-blue-600">4+</p>
+                        <p class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-widest mt-1 font-bold">
+                            Years</p>
+                    </div>
+                </div>
+
+                <!-- Featured Impact Projects -->
+                <div class="space-y-4 max-w-7xl mx-auto px-1 sm:px-2">
+                    <div class="relative h-64 sm:h-80 rounded-2xl overflow-hidden shadow-md">
+                        <img src="Shalompics/VID-20251224-WA0030.mp4" class="hidden" alt="Video Placeholder">
+                        <video src="Shalompics/VID-20251224-WA0030.mp4" class="w-full h-full object-cover" autoplay
+                            muted loop playsinline></video>
+
+                    </div>
+
+                    <!-- Impact Scenarios Grid -->
+                    <div class="mt-12">
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold uppercase tracking-widest text-center">Stories of Change</h3>
+                            <div class="h-1 w-20 bg-blue-600 mx-auto mt-2"></div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Scenario 1 -->
+                            <div class="empire-card rounded-2xl shadow-md border border-gray-100 overflow-hidden group">
+                                <div class="h-48 overflow-hidden">
+                                    <img src="Shalompics/IMG-20251211-WA0000.jpg"
+                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        alt="Success in the Classroom">
+                                </div>
+                                <div class="p-5">
+                                    <h4 class="font-black text-gray-900 uppercase tracking-tighter mb-2">Success in the
+                                        Classroom</h4>
+                                    <p class="text-xs text-gray-600 leading-relaxed">How our scholarship students are
+                                        topping national exams through dedicated tutoring and access to quality learning
+                                        materials.</p>
+                                </div>
+                            </div>
+
+                            <!-- Scenario 2 -->
+                            <div class="empire-card rounded-2xl shadow-md border border-gray-100 overflow-hidden group">
+                                <div class="h-48 overflow-hidden">
+                                    <img src="Shalompics/IMG-20251224-WA0008.jpg"
+                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        alt="Healthy Minds, Healthy Bodies">
+                                </div>
+                                <div class="p-5">
+                                    <h4 class="font-black text-gray-900 uppercase tracking-tighter mb-2">Healthy Minds,
+                                        Healthy Bodies</h4>
+                                    <p class="text-xs text-gray-600 leading-relaxed">The direct impact of our daily
+                                        nutrition program on student attendance and cognitive performance in the rural
+                                        districts.</p>
+                                </div>
+                            </div>
+
+                            <!-- Scenario 3 -->
+                            <div class="empire-card rounded-2xl shadow-md border border-gray-100 overflow-hidden group">
+                                <div class="h-48 overflow-hidden">
+                                    <img src="Shalompics/IMG-20251224-WA0015.jpg"
+                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        alt="Bridging the Health Gap">
+                                </div>
+                                <div class="p-5">
+                                    <h4 class="font-black text-gray-900 uppercase tracking-tighter mb-2">Bridging the
+                                        Health Gap</h4>
+                                    <p class="text-xs text-gray-600 leading-relaxed">Providing critical medical checks
+                                        for rural families, ensuring that illness is never a barrier to a child's
+                                        education.</p>
+                                </div>
+                            </div>
+
+                            <!-- Scenario 4 -->
+                            <div class="empire-card rounded-2xl shadow-md border border-gray-100 overflow-hidden group">
+                                <div class="h-48 overflow-hidden">
+                                    <img src="Shalompics/IMG-20251224-WA0016.jpg"
+                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        alt="Skills for Life">
+                                </div>
+                                <div class="p-5">
+                                    <h4 class="font-black text-gray-900 uppercase tracking-tighter mb-2">Skills for Life
+                                    </h4>
+                                    <p class="text-xs text-gray-600 leading-relaxed">Our vocational training programs
+                                        are transforming youth employability, giving them the tools to build a
+                                        sustainable future.</p>
+                                </div>
+                            </div>
+
+                            <!-- Scenario 5 -->
+                            <div class="empire-card rounded-2xl shadow-md border border-gray-100 overflow-hidden group">
+                                <div class="h-48 overflow-hidden relative">
+                                    <video src="Shalompics/VID-20251224-WA0027.mp4" class="w-full h-full object-cover"
+                                        autoplay muted loop playsinline></video>
+                                </div>
+                                <div class="p-5">
+                                    <h4 class="font-black text-gray-900 uppercase tracking-tighter mb-2">Empowered
+                                        Communities</h4>
+                                    <p class="text-xs text-gray-600 leading-relaxed">How local families are joining the
+                                        quest for education, creating a ripple effect of empowerment throughout the
+                                        whole region.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== MEET OUR LEADERS ===== -->
+            <div class="bg-white py-8 px-0">
+                <div class="max-w-7xl mx-auto">
+
+                    <!-- Section Header -->
+                    <div class="text-center mb-6 px-4">
+                        <p class="text-[10px] font-black text-blue-600 uppercase tracking-[0.25em] mb-1">The People
+                            Behind The Mission</p>
+                        <h2 class="text-2xl sm:text-3xl font-bold uppercase tracking-wider">Meet Our Leaders</h2>
+                    </div>
+
+                    <!-- Founder Card — Tibarokoka Clement -->
+                    <div class="mx-4 mb-5 rounded-2xl overflow-hidden shadow-lg animate-fade-in-up border border-gray-100"
+                        style="animation-delay:0ms">
+                        <div class="flex gap-0">
+                            <!-- Photo -->
+                            <div class="w-36 sm:w-44 flex-shrink-0 relative">
+                                <img src="Daddytibs/file_00000000567c71f890fcd4f8da7760df.png"
+                                    class="w-full h-full object-cover" alt="Tibarokoka Clement — Founder"
+                                    style="min-height:180px"
+                                    onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400'">
+                                <!-- Role ribbon -->
+                                <div class="absolute bottom-0 left-0 right-0 bg-black/80 py-1 px-2 text-center">
+                                    <span
+                                        class="text-[8px] font-black text-white uppercase tracking-widest">Founder</span>
+                                </div>
+                            </div>
+                            <!-- Content -->
+                            <div class="flex-grow p-5 flex flex-col justify-center bg-white">
+                                <h3 class="text-lg font-black text-gray-900 leading-tight">Tibarokoka Clement</h3>
+                                <p class="text-[10px] text-blue-600 font-black uppercase tracking-widest mb-3">Visionary
+                                    Founder · Shalom</p>
+                                <p class="text-xs text-gray-600 leading-relaxed">
+                                    Clement founded Shalom with a burning vision — that every child in rural Uganda
+                                    deserves a quality education, warm meals, and a hopeful future. His sacrificial
+                                    leadership has transformed hundreds of young lives since 2020.
+                                </p>
+                                <div class="flex items-center gap-3 mt-4">
+                                    <a href="tel:0772873936"
+                                        class="flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-gray-700 hover:text-black transition-colors">
+                                        <i data-lucide="phone" class="w-3 h-3"></i> Call
+                                    </a>
+                                    <span class="text-gray-300">|</span>
+                                    <a href="https://wa.me/256772873936" target="_blank"
+                                        class="flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-green-600 hover:text-green-800 transition-colors">
+                                        <i data-lucide="message-circle" class="w-3 h-3"></i> WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Co-Founder Card — Lillian Tibarokoka -->
+                    <div class="mx-4 mb-5 rounded-2xl overflow-hidden shadow-lg animate-fade-in-up border border-gray-100"
+                        style="animation-delay:100ms">
+                        <div class="flex gap-0 flex-row-reverse">
+                            <!-- Photo -->
+                            <div class="w-36 sm:w-44 flex-shrink-0 relative">
+                                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&q=80&w=400&h=500"
+                                    class="w-full h-full object-cover" alt="Lillian Tibarokoka — Co-Founder"
+                                    style="min-height:180px"
+                                    onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400'">
+                                <div class="absolute bottom-0 left-0 right-0 bg-blue-700/90 py-1 px-2 text-center">
+                                    <span
+                                        class="text-[8px] font-black text-white uppercase tracking-widest">Co-Founder</span>
+                                </div>
+                            </div>
+                            <!-- Content -->
+                            <div class="flex-grow p-5 flex flex-col justify-center bg-white">
+                                <h3 class="text-lg font-black text-gray-900 leading-tight">Lillian Tibarokoka</h3>
+                                <p class="text-[10px] text-blue-600 font-black uppercase tracking-widest mb-3">
+                                    Co-Founder · Heart of the Mission</p>
+                                <p class="text-xs text-gray-600 leading-relaxed">
+                                    Lillian is the nurturing force at the heart of Shalom. She oversees child welfare,
+                                    nutrition programmes, and community partnerships — making sure every scholar feels
+                                    loved, safe, and seen every single day.
+                                </p>
+                                <div class="flex items-center gap-3 mt-4">
+                                    <a href="https://wa.me/256772873936" target="_blank"
+                                        class="flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-green-600 hover:text-green-800 transition-colors">
+                                        <i data-lucide="message-circle" class="w-3 h-3"></i> WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Head Teacher Card -->
+                    <div class="mx-4 mb-2 rounded-2xl overflow-hidden shadow-lg animate-fade-in-up border border-gray-100"
+                        style="animation-delay:200ms">
+                        <div class="flex gap-0">
+                            <!-- Photo -->
+                            <div class="w-36 sm:w-44 flex-shrink-0 relative">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400&h=500"
+                                    class="w-full h-full object-cover" alt="Head Teacher — Shalom School"
+                                    style="min-height:180px"
+                                    onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400'">
+                                <div class="absolute bottom-0 left-0 right-0 bg-gray-800/90 py-1 px-2 text-center">
+                                    <span class="text-[8px] font-black text-white uppercase tracking-widest">Head
+                                        Teacher</span>
+                                </div>
+                            </div>
+                            <!-- Content -->
+                            <div class="flex-grow p-5 flex flex-col justify-center bg-white">
+                                <h3 class="text-lg font-black text-gray-900 leading-tight">Head Teacher</h3>
+                                <p class="text-[10px] text-blue-600 font-black uppercase tracking-widest mb-3">Academic
+                                    Leadership · Shalom School</p>
+                                <p class="text-xs text-gray-600 leading-relaxed">
+                                    Our Head Teacher drives academic excellence across all classes, mentoring teachers
+                                    and championing a culture of discipline, curiosity, and achievement for every
+                                    scholar at Shalom.
+                                </p>
+                                <div class="flex items-center gap-2 mt-3">
+                                    <span
+                                        class="inline-flex items-center gap-1 bg-gray-100 rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-wider text-gray-600">
+                                        <i data-lucide="graduation-cap" class="w-3 h-3"></i> Academic Lead
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Goal Tracker -->
+            <div class="bg-white py-4 px-4 sm:px-6">
+                <div class="max-w-xl mx-auto border border-gray-100 rounded-2xl p-6 shadow-sm animate-fade-in-up">
+                    <div class="flex justify-between items-start mb-5">
+                        <div>
+                            <p class="text-[10px] font-black text-blue-600 uppercase tracking-widest">Support A Child
+                            </p>
+                            <p class="text-3xl font-black text-gray-900 mt-1">50,000 <span
+                                    class="text-sm font-bold text-gray-400 uppercase">UGX</span></p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                            <i data-lucide="trending-up" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                    <div class="progress-bar mb-3">
+                        <div class="progress-fill" style="width:72%"></div>
+                    </div>
+                    <div class="flex justify-between text-[10px] text-gray-500 font-bold uppercase">
+                        <span>72% Goal Met</span>
+                        <span>Term 1 / 2025</span>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <button onclick="goTab('partner')"
+                        class="btn-primary w-full max-w-xl px-6 py-4 text-xs rounded-sm">Partner With Us Now</button>
+                </div>
+            </div>
+
+            <!-- Features & Socials -->
+            <div class="bg-white py-8 px-4 sm:px-6">
+                <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8 text-center">
+                    <!-- Support -->
+                    <div
+                        class="flex flex-col items-center justify-center border-b sm:border-b-0 sm:border-r border-gray-100 pb-6 sm:pb-0 sm:pr-6">
+                        <div
+                            class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-4 shadow-lg animate-pulse-slow">
+                            <i data-lucide="headphones" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-base font-bold uppercase tracking-wider mb-2">Support 24/7</h3>
+                        <p class="text-sm text-gray-600">Reach us anytime — we are here for every child and every
+                            partner.</p>
+                    </div>
+
+                    <!-- Social -->
+                    <div class="flex flex-col items-center justify-center pt-2 sm:pt-0 sm:pl-6">
+                        <h3 class="text-base font-bold uppercase tracking-wider mb-4">Follow Us @Shalom</h3>
+                        <div class="flex items-center gap-3">
+                            <a href="#"
+                                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition-all transform hover:scale-110 shadow-sm">
+                                <i data-lucide="facebook" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#"
+                                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center hover:bg-black hover:text-white transition-all transform hover:scale-110 shadow-sm">
+                                <i data-lucide="twitter" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#"
+                                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center hover:bg-[#E4405F] hover:text-white transition-all transform hover:scale-110 shadow-sm">
+                                <i data-lucide="instagram" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#"
+                                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center hover:bg-[#FF0000] hover:text-white transition-all transform hover:scale-110 shadow-sm">
+                                <i data-lucide="youtube" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-3 font-medium tracking-wide">Facebook • Twitter • Instagram •
+                            YouTube</p>
+
+                        <div class="mt-6 pt-6 border-t border-gray-200 w-full">
+                            <h4 class="text-sm font-bold uppercase tracking-wider mb-3">Our Location</h4>
+                            <div class="text-xs text-gray-600 space-y-1">
+                                <div class="flex items-center justify-center gap-2">
+                                    <i data-lucide="map-pin" class="w-4 h-4 text-gray-800"></i>
+                                    <span class="font-bold text-gray-900 uppercase">Uganda, East Africa</span>
+                                </div>
+                                <p>Rural Communities · Kampala Region</p>
+                                <p>0772873936</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /home -->
+
+        <!-- SCHOLARS VIEW -->
+        <div id="view-scholars" class="view animate-fade-in">
+            <div class="px-4 pt-6 pb-24 max-w-2xl mx-auto">
+                <h2 class="text-2xl font-black mb-1 uppercase tracking-wider">Our Scholars</h2>
+                <p class="text-sm text-gray-500 mb-6 tracking-wide">Tap a child to support their dreams this term.</p>
+                <div class="space-y-4" id="scholars-list"></div>
+            </div>
+        </div>
+
+        <!-- IMPACT VIEW -->
+        <div id="view-impact" class="view animate-fade-in">
+            <div class="px-4 pt-6 pb-24">
+                <div class="mb-6 text-center">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-1 uppercase tracking-wider">Our Impact</h2>
+                    <p class="text-sm text-gray-500 tracking-wide">The power of partnership in action.</p>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-3 mb-8 max-w-7xl mx-auto">
+                    <div class="stat-card rounded-xl shadow-sm border border-gray-50">
+                        <p class="text-2xl sm:text-4xl font-black text-blue-600">500+</p>
+                        <p class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-widest mt-1 font-bold">
+                            Children</p>
+                    </div>
+                    <div class="stat-card rounded-xl shadow-sm border border-gray-50">
+                        <p class="text-2xl sm:text-4xl font-black text-blue-600">5</p>
+                        <p class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-widest mt-1 font-bold">
+                            Programmes</p>
+                    </div>
+                    <div class="stat-card rounded-xl shadow-sm border border-gray-50">
+                        <p class="text-2xl sm:text-4xl font-black text-blue-600">4+</p>
+                        <p class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-widest mt-1 font-bold">
+                            Years</p>
+                    </div>
+                </div>
+
+                <!-- Featured Impact Video -->
+                <div class="space-y-4 max-w-7xl mx-auto px-0">
+                    <div class="relative h-64 sm:h-80 rounded-2xl overflow-hidden shadow-md">
+                        <video src="Shalompics/VID-20251224-WA0030.mp4" class="w-full h-full object-cover" autoplay
+                            muted loop playsinline></video>
+                    </div>
+                </div>
+
+                <!-- Impact Scenarios Grid -->
+                <div class="max-w-7xl mx-auto mt-12">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold uppercase tracking-widest text-center">Stories of Change</h3>
+                        <div class="h-1 w-20 bg-blue-600 mx-auto mt-2"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Scenario 1 -->
+                        <div class="empire-card rounded-2xl shadow-md border border-gray-100 overflow-hidden group">
+                            <div class="h-48 overflow-hidden">
+                                <img src="Shalompics/IMG-20251211-WA0000.jpg"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    alt="Success in the Classroom">
+                            </div>
+                            <div class="p-5">
+                                <h4 class="font-black text-gray-900 uppercase tracking-tighter mb-2">Success in the
+                                    Classroom</h4>
+                                <p class="text-xs text-gray-600 leading-relaxed">How our scholarship students are
+                                    topping national exams through dedicated tutoring and access to quality learning
+                                    materials.</p>
+                            </div>
+                        </div>
+
+                        <!-- Scenario 2 -->
+                        <div class="empire-card rounded-2xl shadow-md border border-gray-100 overflow-hidden group">
+                            <div class="h-48 overflow-hidden">
+                                <img src="Shalompics/IMG-20251224-WA0008.jpg"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    alt="Healthy Minds, Healthy Bodies">
+                            </div>
+                            <div class="p-5">
+                                <h4 class="font-black text-gray-900 uppercase tracking-tighter mb-2">Healthy Minds,
+                                    Healthy Bodies</h4>
+                                <p class="text-xs text-gray-600 leading-relaxed">The direct impact of our daily
+                                    nutrition program on student attendance and cognitive performance in the rural
+                                    districts.</p>
+                            </div>
+                        </div>
+
+                        <!-- Scenario 3 -->
+                        <div class="empire-card rounded-2xl shadow-md border border-gray-100 overflow-hidden group">
+                            <div class="h-48 overflow-hidden">
+                                <img src="Shalompics/IMG-20251224-WA0015.jpg"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    alt="Bridging the Health Gap">
+                            </div>
+                            <div class="p-5">
+                                <h4 class="font-black text-gray-900 uppercase tracking-tighter mb-2">Bridging the Health
+                                    Gap</h4>
+                                <p class="text-xs text-gray-600 leading-relaxed">Providing critical medical checks for
+                                    rural families, ensuring that illness is never a barrier to a child's education.</p>
+                            </div>
+                        </div>
+
+                        <!-- Scenario 4 -->
+                        <div class="empire-card rounded-2xl shadow-md border border-gray-100 overflow-hidden group">
+                            <div class="h-48 overflow-hidden">
+                                <img src="Shalompics/IMG-20251224-WA0016.jpg"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    alt="Skills for Life">
+                            </div>
+                            <div class="p-5">
+                                <h4 class="font-black text-gray-900 uppercase tracking-tighter mb-2">Skills for Life
+                                </h4>
+                                <p class="text-xs text-gray-600 leading-relaxed">Our vocational training programs are
+                                    transforming youth employability, giving them the tools to build a sustainable
+                                    future.</p>
+                            </div>
+                        </div>
+
+                        <!-- Scenario 5 -->
+                        <div class="empire-card rounded-2xl shadow-md border border-gray-100 overflow-hidden group">
+                            <div class="h-48 overflow-hidden relative">
+                                <video src="Shalompics/VID-20251224-WA0027.mp4" class="w-full h-full object-cover"
+                                    autoplay muted loop playsinline></video>
+                            </div>
+                            <div class="p-5">
+                                <h4 class="font-black text-gray-900 uppercase tracking-tighter mb-2">Empowered
+                                    Communities</h4>
+                                <p class="text-xs text-gray-600 leading-relaxed">How local families are joining the
+                                    quest for education, creating a ripple effect of empowerment throughout the whole
+                                    region.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTNER VIEW -->
+        <div id="view-partner" class="view animate-fade-in">
+
+            <!-- Full-page hero background -->
+            <div class="relative min-h-screen flex flex-col">
+
+                <!-- Top hero image strip -->
+                <div class="relative h-56 w-full overflow-hidden flex-shrink-0">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800"
+                        class="w-full h-full object-cover" alt="Shalom Children"
+                        onerror="this.src='https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=800'">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-white"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-center">
+                        <h2 class="text-2xl font-black text-white uppercase tracking-wider drop-shadow-lg">Partner With
+                            Us</h2>
+                        <p class="text-white/80 text-xs mt-1 tracking-widest">Change a child's future today</p>
+                    </div>
+                </div>
+
+                <!-- Content card -->
+                <div class="flex-grow bg-white px-6 pt-8 pb-32 flex flex-col items-center">
+
+                    <!-- Heart icon -->
+                    <div
+                        class="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mb-5 animate-pulse-slow">
+                        <i data-lucide="heart" class="w-8 h-8 text-blue-600"></i>
+                    </div>
+
+                    <!-- Message -->
+                    <h3 class="text-xl font-black text-gray-900 text-center mb-2 uppercase tracking-wide">Reach Out Now
+                    </h3>
+                    <p class="text-sm text-gray-500 text-center mb-8 leading-relaxed max-w-xs">
+                        Talk directly to <strong class="text-gray-800">Tibarokoka Clement</strong>, our founder, to
+                        discuss how you can sponsor a child or support our programmes.
+                    </p>
+
+                    <!-- WhatsApp Button -->
+                    <a href="https://wa.me/256772873936?text=Hello%20Tibarokoka%20Clement%2C%20I%20would%20like%20to%20partner%20with%20Shalom%20to%20support%20a%20child%27s%20education.%20Please%20guide%20me%20on%20the%20next%20steps.%20Thank%20you%20%F0%9F%99%8F"
+                        target="_blank"
+                        class="w-full max-w-sm flex items-center justify-center gap-3 bg-[#25D366] text-white rounded-2xl py-5 font-black text-sm uppercase tracking-widest shadow-xl mb-4 transition-all active:scale-95"
+                        style="font-family:'Montserrat',sans-serif; text-decoration:none;">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                        Chat on WhatsApp
+                    </a>
+
+                    <!-- Call Button -->
+                    <a href="tel:0772873936"
+                        class="w-full max-w-sm flex items-center justify-center gap-3 bg-black text-white rounded-2xl py-5 font-black text-sm uppercase tracking-widest shadow-xl transition-all active:scale-95"
+                        style="font-family:'Montserrat',sans-serif; text-decoration:none;">
+                        <i data-lucide="phone" class="w-6 h-6"></i>
+                        Call 0772 873 936
+                    </a>
+
+                    <!-- Divider note -->
+                    <p class="text-[11px] text-gray-400 text-center mt-6 tracking-wide">
+                        Both options connect you directly to<br>
+                        <strong class="text-gray-600">Tibarokoka Clement — Founder, Shalom</strong>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+    </main><!-- /app-content -->
+
+    <!-- Floating WhatsApp removed per user request -->
+
+    <!-- ===== CHILD PROFILE SHEET ===== -->
+    <div id="profile-overlay">
+        <div id="profile-sheet">
+            <!-- Drag handle -->
+            <div class="flex justify-center pt-3 pb-1">
+                <div class="w-10 h-1 bg-gray-200 rounded-full"></div>
+            </div>
+            <!-- Close button -->
+            <button onclick="closeProfile()"
+                class="absolute top-4 right-4 z-10 w-9 h-9 bg-white/90 rounded-full flex items-center justify-center shadow-sm"
+                style="position:absolute;top:12px;right:12px;">
+                <i data-lucide="x" class="w-4 h-4 text-gray-700"></i>
+            </button>
+
+            <!-- Hero photo -->
+            <div class="profile-hero">
+                <img id="profile-img" src="" alt="Scholar"
+                    onerror="this.src='https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=400'">
+                <div class="profile-hero-overlay">
+                    <span class="profile-badge" id="profile-level">Level</span>
+                    <h2 class="text-2xl font-black text-white leading-tight" id="profile-name">Name</h2>
+                    <p class="text-white/70 text-xs mt-1" id="profile-dream">Dream</p>
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="p-5 space-y-5 pb-8">
+
+                <!-- About -->
+                <div>
+                    <p class="text-[9px] font-black text-blue-600 uppercase tracking-widest mb-1">About This Scholar</p>
+                    <p class="text-sm text-gray-700 leading-relaxed" id="profile-note">Note</p>
+                </div>
+
+                <!-- Stat row -->
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="bg-gray-50 rounded-xl p-3 text-center">
+                        <p class="text-lg font-black text-gray-900" id="stat-meals">3</p>
+                        <p class="text-[9px] text-gray-400 uppercase tracking-widest font-bold">Meals/Day</p>
+                    </div>
+                    <div class="bg-blue-50 rounded-xl p-3 text-center">
+                        <p class="text-lg font-black text-blue-700" id="stat-term">T1</p>
+                        <p class="text-[9px] text-gray-400 uppercase tracking-widest font-bold">Term</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-3 text-center">
+                        <p class="text-lg font-black text-gray-900">✓</p>
+                        <p class="text-[9px] text-gray-400 uppercase tracking-widest font-bold">Enrolled</p>
+                    </div>
+                </div>
+
+                <!-- Sponsor note -->
+                <div class="bg-blue-50 border border-blue-100 rounded-2xl p-4">
+                    <p class="text-[10px] font-black text-blue-700 uppercase tracking-widest mb-1">How You Can Help</p>
+                    <p class="text-xs text-blue-800 leading-relaxed">Sponsoring <span class="font-black"
+                            id="profile-name-inline">this child</span> covers one term of school fees, meals, uniform,
+                        and medical support — changing a life for just <strong>50,000 UGX/term</strong>.</p>
+                </div>
+
+                <!-- WhatsApp CTA -->
+                <a id="profile-wa-btn" href="#" target="_blank" class="wa-support-btn">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                    Support on WhatsApp
+                </a>
+
+                <!-- Call option -->
+                <a href="tel:0772873936"
+                    class="flex items-center justify-center gap-2 text-xs font-black uppercase tracking-widest text-gray-500 hover:text-black transition-colors py-2">
+                    <i data-lucide="phone" class="w-4 h-4"></i> Or Call Founder: 0772 873 936
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast"></div>
+
+    <!-- Bottom Nav -->
+    <nav id="bottom-nav">
+        <button class="nav-item active" id="nav-home" onclick="goTab('home')">
+            <i data-lucide="home" class="w-5 h-5"></i>
+            Home
+        </button>
+        <button class="nav-item" id="nav-scholars" onclick="goTab('scholars')">
+            <i data-lucide="users" class="w-5 h-5"></i>
+            Scholars
+        </button>
+        <button class="nav-item" id="nav-impact" onclick="goTab('impact')">
+            <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
+            Impact
+        </button>
+        <button class="nav-item" id="nav-partner" onclick="goTab('partner')">
+            <i data-lucide="heart" class="w-5 h-5"></i>
+            Partner
+        </button>
+    </nav>
+
+    <script>
+        // ==================
+        // DATA
+        // ==================
+        const scholars = [
+            { name: 'Sarah Nakato', level: 'Primary 4', dream: 'Future Nurse', note: 'Excellent in Science & Math.', color: 'blue', img: 'https://images.unsplash.com/photo-1547496613-4e193f06758f?auto=format&fit=crop&q=80&w=200' },
+            { name: 'Brian Okello', level: 'Nursery', dream: 'First Generation', note: 'Enjoys painting & coloring.', color: 'purple', img: 'https://images.unsplash.com/photo-1524061511843-fd43443e3cb2?auto=format&fit=crop&q=80&w=200' },
+            { name: 'Esther Namono', level: 'Primary 6', dream: 'Future Engineer', note: 'Lead in Robot Club.', color: 'amber', img: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=200' },
+            { name: 'Wandera Kato', level: 'Primary 5', dream: 'Journalist', note: 'Talented public speaker.', color: 'blue', img: 'https://images.unsplash.com/photo-1524178232363-1fb28f74b671?auto=format&fit=crop&q=80&w=200' },
+            { name: 'Grace Namutebi', level: 'Primary 3', dream: 'Doctor', note: 'Top of her class in STEM.', color: 'green', img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=200' },
+            { name: 'Joseph Ssemanda', level: 'Primary 7', dream: 'Lawyer', note: 'Debate champion in 2024.', color: 'indigo', img: 'https://images.unsplash.com/photo-1526721940322-14fe39eaf9b0?auto=format&fit=crop&q=80&w=200' },
+        ];
+
+        const colorMap = {
+            blue: 'text-blue-600', purple: 'text-purple-600', amber: 'text-amber-600',
+            green: 'text-green-600', indigo: 'text-indigo-600'
+        };
+
+        // ==================
+        // BUILD SCHOLARS LIST
+        // ==================
+        function buildScholarsList() {
+            const list = document.getElementById('scholars-list');
+            if (!list) return;
+            list.innerHTML = scholars.map((s, i) => `
+        <div class="bg-white border border-gray-100 rounded-2xl p-4 flex items-center gap-4 shadow-sm hover:shadow-md transition-all cursor-pointer animate-fade-in-up" style="animation-delay:${i * 60}ms" onclick="openProfile(${i})">
+          <img src="${s.img}" class="w-20 h-20 rounded-xl object-cover flex-shrink-0" alt="${s.name}" onerror="this.src='https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=200'">
+          <div class="flex-grow">
+            <h4 class="font-black text-gray-900 text-lg leading-tight">${s.name}</h4>
+            <p class="text-[10px] ${colorMap[s.color] || 'text-blue-600'} font-black uppercase tracking-widest">${s.level} · ${s.dream}</p>
+            <p class="text-[10px] text-gray-400 mt-1">${s.note}</p>
+          </div>
+          <i data-lucide="chevron-right" class="w-5 h-5 text-gray-300 flex-shrink-0"></i>
+        </div>
+      `).join('');
+            lucide.createIcons();
+        }
+
+        // ==================
+        // CHILD PROFILE SHEET
+        // ==================
+        function openProfile(index) {
+            const s = scholars[index];
+            if (!s) return;
+
+            // Populate fields
+            document.getElementById('profile-img').src = s.img.replace('w=200', 'w=600');
+            document.getElementById('profile-img').alt = s.name;
+            document.getElementById('profile-name').textContent = s.name;
+            document.getElementById('profile-level').textContent = s.level;
+            document.getElementById('profile-dream').textContent = '🌟 Dream: ' + s.dream;
+            document.getElementById('profile-note').textContent = s.note;
+            document.getElementById('profile-name-inline').textContent = s.name;
+            document.getElementById('stat-term').textContent = 'T1 \'25';
+
+            // Build auto-filled WhatsApp message to founder
+            const msg = [
+                '📚 Hello Tibarokoka Clement (Shalom Founder),',
+                '',
+                'I am interested in supporting one of your scholars:',
+                '',
+                '👦 Name:  ' + s.name,
+                '🏫 Level: ' + s.level,
+                '🌟 Dream: ' + s.dream,
+                '📝 Note:  ' + s.note,
+                '',
+                'I would love to know how I can partner to support ' + s.name + ' this term. Please guide me on the next steps.',
+                '',
+                'Thank you 🙏'
+            ].join('\n');
+
+            const waUrl = 'https://wa.me/256772873936?text=' + encodeURIComponent(msg);
+            document.getElementById('profile-wa-btn').href = waUrl;
+
+            // Open overlay
+            document.getElementById('profile-overlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeProfile() {
+            document.getElementById('profile-overlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Close on backdrop tap
+        document.getElementById('profile-overlay').addEventListener('click', function (e) {
+            if (e.target === this) closeProfile();
+        });
+
+        // Close on swipe-down (basic)
+        (function () {
+            let startY = 0;
+            const sheet = document.getElementById('profile-sheet');
+            sheet.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive: true });
+            sheet.addEventListener('touchend', e => {
+                if (e.changedTouches[0].clientY - startY > 80) closeProfile();
+            }, { passive: true });
+        })();
+
+        // ==================
+        // BUILD MARQUEE
+        // ==================
+        function buildMarquee() {
+            const inner = document.getElementById('marquee-inner');
+            if (!inner) return;
+            const cards = [...scholars, ...scholars].map(s => `
+        <div class="mq-card rounded-2xl" style="width:200px;margin-right:14px;flex-shrink:0;background:white;border:1px solid #f0f0f0;overflow:hidden">
+          <img src="${s.img}" class="w-full h-28 object-cover" alt="${s.name}">
+          <div class="p-3">
+            <h4 class="font-black text-gray-800 text-sm leading-tight">${s.name}</h4>
+            <p class="text-[10px] text-gray-400 mt-1">${s.level} · ${s.dream}</p>
+          </div>
+        </div>
+      `).join('');
+            inner.innerHTML = cards;
+            inner.style.display = 'flex';
+        }
+
+        // ==================
+        // TAB NAVIGATION
+        // ==================
+        const views = ['home', 'scholars', 'impact', 'partner'];
+
+        function goTab(tab) {
+            views.forEach(v => {
+                document.getElementById('view-' + v)?.classList.remove('active');
+                document.getElementById('nav-' + v)?.classList.remove('active');
+            });
+            document.getElementById('view-' + tab)?.classList.add('active');
+            document.getElementById('nav-' + tab)?.classList.add('active');
+            window.scrollTo(0, 0);
+
+            if (tab === 'scholars') buildScholarsList();
+            lucide.createIcons();
+        }
+
+        // ==================
+        // SIDEBAR
+        // ==================
+        function openSidebar() {
+            document.getElementById('sidebar-overlay').classList.add('open');
+        }
+        function closeSidebar() {
+            document.getElementById('sidebar-overlay').classList.remove('open');
+        }
+        document.getElementById('sidebar-overlay').addEventListener('click', function (e) {
+            if (e.target === this) closeSidebar();
+        });
+
+        // ==================
+        // TOAST
+        // ==================
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            if (msg) t.textContent = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2500);
+        }
+
+        function copyNumber(text) {
+            navigator.clipboard?.writeText(text).then(() => showToast('✅ ' + text + ' copied!'))
+                .catch(() => showToast('Number: ' + text));
+        }
+
+        function copyAndCall(num) {
+            navigator.clipboard?.writeText(num)
+                .then(() => showToast('✅ ' + num + ' copied!'))
+                .catch(() => { });
+        }
+
+        // ==================
+        // INIT
+        // ==================
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            buildMarquee();
+        });
+    </script>
+</body>
+
+</html>
