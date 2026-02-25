@@ -1413,12 +1413,12 @@
         // DATA
         // ==================
         const scholars = [
-            { name: 'Sarah Nakato', level: 'Primary 4', dream: 'Future Nurse', note: 'Excellent in Science & Math.', color: 'blue', img: 'https://images.unsplash.com/photo-1547496613-4e193f06758f?auto=format&fit=crop&q=80&w=200' },
-            { name: 'Brian Okello', level: 'Nursery', dream: 'First Generation', note: 'Enjoys painting & coloring.', color: 'purple', img: 'https://images.unsplash.com/photo-1524061511843-fd43443e3cb2?auto=format&fit=crop&q=80&w=200' },
-            { name: 'Esther Namono', level: 'Primary 6', dream: 'Future Engineer', note: 'Lead in Robot Club.', color: 'amber', img: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=200' },
-            { name: 'Wandera Kato', level: 'Primary 5', dream: 'Journalist', note: 'Talented public speaker.', color: 'blue', img: 'https://images.unsplash.com/photo-1524178232363-1fb28f74b671?auto=format&fit=crop&q=80&w=200' },
-            { name: 'Grace Namutebi', level: 'Primary 3', dream: 'Doctor', note: 'Top of her class in STEM.', color: 'green', img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=200' },
-            { name: 'Joseph Ssemanda', level: 'Primary 7', dream: 'Lawyer', note: 'Debate champion in 2024.', color: 'indigo', img: 'https://images.unsplash.com/photo-1526721940322-14fe39eaf9b0?auto=format&fit=crop&q=80&w=200' },
+            { name: 'Sarah Nakato', level: 'Primary 4', dream: 'Future Nurse', note: 'Excellent in Science & Math.', color: 'blue', img: 'Shalompics/IMG-20251211-WA0000.jpg' },
+            { name: 'Brian Okello', level: 'Nursery', dream: 'First Generation', note: 'Enjoys painting & coloring.', color: 'purple', img: 'Shalompics/IMG-20251211-WA0001.jpg' },
+            { name: 'Esther Namono', level: 'Primary 6', dream: 'Future Engineer', note: 'Lead in Robot Club.', color: 'amber', img: 'Shalompics/IMG-20251211-WA0002.jpg' },
+            { name: 'Wandera Kato', level: 'Primary 5', dream: 'Journalist', note: 'Talented public speaker.', color: 'blue', img: 'Shalompics/IMG-20251224-WA0004.jpg' },
+            { name: 'Grace Namutebi', level: 'Primary 3', dream: 'Doctor', note: 'Top of her class in STEM.', color: 'green', img: 'Shalompics/IMG-20251224-WA0008.jpg' },
+            { name: 'Joseph Ssemanda', level: 'Primary 7', dream: 'Lawyer', note: 'Debate champion in 2024.', color: 'indigo', img: 'Shalompics/IMG-20251224-WA0015.jpg' },
         ];
 
         const colorMap = {
@@ -1454,7 +1454,7 @@
             if (!s) return;
 
             // Populate fields
-            document.getElementById('profile-img').src = s.img.replace('w=200', 'w=600');
+            document.getElementById('profile-img').src = s.img.includes('unsplash.com') ? s.img.replace('w=200', 'w=600') : s.img;
             document.getElementById('profile-img').alt = s.name;
             document.getElementById('profile-name').textContent = s.name;
             document.getElementById('profile-level').textContent = s.level;
