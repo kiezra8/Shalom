@@ -40,14 +40,14 @@ const Hero = ({ onCtaClick }) => {
   }, []);
 
   return (
-    <section className="relative h-[75vh] md:h-[85vh] w-full overflow-hidden bg-white pt-[80px] md:pt-[100px]">
-      <AnimatePresence mode="wait">
+    <section className="relative h-[75vh] md:h-[85vh] w-full overflow-hidden bg-black pt-[80px] md:pt-[100px]">
+      <AnimatePresence>
         <motion.div
           key={currentSlide}
-          initial={{ scale: 1.05, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.98, opacity: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
           className="absolute inset-0"
         >
           <img 
@@ -55,8 +55,8 @@ const Hero = ({ onCtaClick }) => {
             alt={slides[currentSlide].title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent" />
         </motion.div>
       </AnimatePresence>
 
