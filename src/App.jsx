@@ -6,7 +6,6 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import ImpactSection from './components/ImpactSection';
 import PendingProjects from './components/PendingProjects';
-import Leadership from './components/Leadership';
 import FounderStory from './components/FounderStory';
 
 const ContactModal = ({ isOpen, onClose }) => {
@@ -114,7 +113,6 @@ const App = () => {
             >
               <Hero onCtaClick={openContact} />
               <ImpactSection openContact={openContact} />
-              <Leadership />
               <PendingProjects openContact={openContact} />
               <FounderStory />
             </motion.div>
