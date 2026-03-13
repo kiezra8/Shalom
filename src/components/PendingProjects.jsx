@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { TrendingUp, Clock, Target, ArrowUpRight } from 'lucide-react';
+import { Clock, Target, ArrowUpRight } from 'lucide-react';
 import { pendingProjects } from '../data/projects';
 
-const PendingProjects = () => {
+const PendingProjects = ({ openContact }) => {
   return (
     <section id="projects" className="bg-white">
       <div className="container mx-auto px-4 py-32">
@@ -15,13 +15,12 @@ const PendingProjects = () => {
           >
             Immediate Opportunities
           </motion.span>
-          <h2 className="text-5xl md:text-7xl font-black text-gray-900 mb-8 tracking-tighter">OUR PENDING <br /><span className="text-red-500">MISSIONS.</span></h2>
+          <h2 className="text-5xl md:text-7xl font-black text-gray-900 mb-8 tracking-tighter uppercase italic">OUR PENDING <br /><span className="text-red-500">MISSIONS.</span></h2>
           <p className="text-gray-500 text-xl font-medium">
             These vital initiatives are currently waiting for full funding. Your active partnership moves the needle from "Pending" to "Completed."
           </p>
         </div>
 
-        {/* Stacked full-width cards for vertical prominence */}
         <div className="space-y-24">
           {pendingProjects.map((project, index) => (
             <motion.div
@@ -47,8 +46,8 @@ const PendingProjects = () => {
                     {project.status}
                   </span>
                 </div>
-                <div className="absolute bottom-10 left-10 text-white">
-                    <h3 className="text-4xl md:text-6xl font-black uppercase mb-2 tracking-tight">{project.title}</h3>
+                <div className="absolute bottom-10 left-10 text-white px-6">
+                    <h3 className="text-4xl md:text-6xl font-black uppercase mb-2 tracking-tight italic">{project.title}</h3>
                     <p className="text-gray-200 text-lg max-w-xl opacity-90">{project.description}</p>
                 </div>
               </div>
@@ -94,10 +93,16 @@ const PendingProjects = () => {
                   </div>
 
                   <div className="flex flex-col gap-6">
-                    <button className="w-full flex items-center justify-center gap-4 py-8 bg-gray-900 hover:bg-primary-600 text-white rounded-[2rem] font-black uppercase tracking-widest text-sm transition-all shadow-2xl hover:shadow-primary-600/30">
+                    <button 
+                      onClick={openContact}
+                      className="w-full flex items-center justify-center gap-4 py-8 bg-gray-900 hover:bg-primary-600 text-white rounded-[2rem] font-black uppercase tracking-widest text-sm transition-all shadow-2xl hover:shadow-primary-600/30"
+                    >
                         Fully Sponsor This Mission <ArrowUpRight className="w-6 h-6" />
                     </button>
-                    <button className="w-full flex items-center justify-center gap-4 py-8 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-[2rem] font-black uppercase tracking-widest text-sm transition-all">
+                    <button 
+                      onClick={openContact}
+                      className="w-full flex items-center justify-center gap-4 py-8 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-[2rem] font-black uppercase tracking-widest text-sm transition-all"
+                    >
                         Request Project Brief
                     </button>
                   </div>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, X, Heart, Users, Landmark, BookOpen, Play } from 'lucide-react';
+import { ChevronRight, X, Heart, Landmark, BookOpen, Play } from 'lucide-react';
 import { impactProjects } from '../data/projects';
 
-const ImpactSection = () => {
+const ImpactSection = ({ openContact }) => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   return (
@@ -20,7 +20,7 @@ const ImpactSection = () => {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight"
+            className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight uppercase italic tracking-tighter"
           >
             Measurable Change, <br />
             <span className="text-primary-600">Infinite Potential.</span>
@@ -30,7 +30,6 @@ const ImpactSection = () => {
           </p>
         </div>
 
-        {/* Impact List - Full width items for vertical scroll prominence */}
         <div className="space-y-12 mb-24">
           {impactProjects.map((project, index) => (
             <motion.div
@@ -74,7 +73,6 @@ const ImpactSection = () => {
             </motion.div>
           ))}
 
-          {/* Feature Video Impact - MOVED TO LAST ITEM */}
           <motion.div 
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -94,9 +92,12 @@ const ImpactSection = () => {
                <span className="text-primary-400 font-black text-[10px] uppercase tracking-[0.5em] mb-4 block">Archive Mission</span>
                <h2 className="text-4xl md:text-6xl font-black text-white mb-8 italic uppercase tracking-tighter">See Our Journey <br /> in Motion.</h2>
                <p className="text-gray-400 text-lg mb-12 max-w-xl mx-auto">Witness the daily transformation happening on the ground in rural Uganda through our visual documentary.</p>
-               <div className="inline-flex items-center gap-4 px-8 py-4 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 text-white font-black uppercase text-[10px] tracking-widest">
-                  <Play className="text-white w-4 h-4 fill-white" /> Live Footage
-               </div>
+               <button 
+                onClick={openContact}
+                className="inline-flex items-center gap-4 px-8 py-4 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 text-white font-black uppercase text-[10px] tracking-widest hover:bg-white hover:text-black transition-all"
+               >
+                  <Play className="w-4 h-4 fill-current" /> Particpate with us
+               </button>
             </div>
           </motion.div>
         </div>
@@ -160,7 +161,13 @@ const ImpactSection = () => {
                     </p>
                   </div>
 
-                  <button className="w-full py-6 bg-black text-white rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all transform active:scale-95 shadow-xl shadow-black/20">
+                  <button 
+                    onClick={() => {
+                      setSelectedProject(null);
+                      openContact();
+                    }}
+                    className="w-full py-6 bg-black text-white rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all transform active:scale-95 shadow-xl shadow-black/20"
+                  >
                     Partner With This Impact
                   </button>
                 </div>
