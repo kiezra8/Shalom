@@ -69,7 +69,7 @@ const App = () => {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowIntro(false), 2500);
+    const timer = setTimeout(() => setShowIntro(false), 1800);
     return () => clearTimeout(timer);
   }, []);
 
