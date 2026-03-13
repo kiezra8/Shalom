@@ -73,6 +73,10 @@ const App = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activeTab]);
+
   const openContact = () => setIsContactOpen(true);
 
   if (showIntro) {
