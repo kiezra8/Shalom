@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import ImpactSection from './components/ImpactSection';
 import PendingProjects from './components/PendingProjects';
-import { Heart, Globe, Shield } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('home');
