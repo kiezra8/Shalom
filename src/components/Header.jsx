@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Heart, BarChart2, Home, ChevronRight } from 'lucide-react';
 
 const Header = ({ onTabChange, activeTab }) => {
