@@ -40,7 +40,7 @@ const Hero = ({ onCtaClick }) => {
   }, []);
 
   return (
-    <section className="relative h-[65vh] md:h-[80vh] w-full overflow-hidden bg-white">
+    <section className="relative h-[75vh] md:h-[85vh] w-full overflow-hidden bg-white pt-[80px] md:pt-[100px]">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}

@@ -25,16 +25,14 @@ const Header = ({ onTabChange, activeTab }) => {
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled 
-            ? 'bg-white/90 backdrop-blur-xl shadow-md py-2' 
-            : 'bg-white/10 backdrop-blur-md border-b border-white/10 py-4'
+            ? 'bg-white shadow-md py-2' 
+            : 'bg-white border-b border-gray-100 py-4'
         }`}
       >
         <div className="container mx-auto px-4 flex items-center justify-between">
           <button 
             onClick={() => setIsOpen(true)}
-            className={`p-2 rounded-full transition-colors ${
-              scrolled ? 'hover:bg-gray-100 text-gray-900' : 'hover:bg-white/20 text-white'
-            }`}
+            className="p-2 rounded-full transition-colors hover:bg-gray-100 text-gray-900"
           >
             <Menu className="w-6 h-6" />
           </button>
@@ -43,13 +41,11 @@ const Header = ({ onTabChange, activeTab }) => {
             className="cursor-pointer text-center group"
             onClick={() => onTabChange('home')}
           >
-            <h1 className={`text-2xl font-black tracking-tighter transition-colors ${
-              scrolled ? 'text-gray-900' : 'text-white'
-            }`}>
+            <h1 className="text-2xl font-black tracking-tighter transition-colors text-gray-900">
               SHALOM
             </h1>
             <span className={`text-[9px] font-black tracking-[0.4em] uppercase block transition-colors ${
-              scrolled ? 'text-primary-600' : 'text-primary-400'
+              scrolled ? 'text-primary-600' : 'text-primary-500'
             }`}>
               Uganda
             </span>
@@ -58,17 +54,13 @@ const Header = ({ onTabChange, activeTab }) => {
           <div className="flex items-center gap-1 md:gap-3">
             <button 
               onClick={() => onTabChange('impact')}
-              className={`p-2 rounded-full transition-colors ${
-                scrolled ? 'hover:bg-gray-100 text-gray-900' : 'hover:bg-white/20 text-white'
-              }`}
+              className="p-2 rounded-full transition-colors hover:bg-gray-100 text-gray-900"
             >
               <BarChart2 className="w-5 h-5 md:w-6 md:h-6" />
             </button>
             <button 
               onClick={() => onTabChange('projects')}
-              className={`p-2 rounded-full transition-colors relative ${
-                scrolled ? 'hover:bg-gray-100 text-gray-900' : 'hover:bg-white/20 text-white'
-              }`}
+              className="p-2 rounded-full transition-colors relative hover:bg-gray-100 text-gray-900"
             >
               <Heart className="w-5 h-5 md:w-6 md:h-6" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
