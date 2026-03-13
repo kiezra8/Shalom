@@ -112,5 +112,68 @@ export const pendingProjects = [
     needed: "$2,000",
     description: "A community project managed by our older students to encourage reading.",
     status: "Near Completion"
+  },
+  {
+    id: 'p4',
+    title: "Solar Lighting for Dorms",
+    image: "/Shalompics/IMG-20251224-WA0004.jpg",
+    progress: 10,
+    needed: "$5,000",
+    description: "Providing safe and bright lighting for night studies and safety.",
+    status: "Pending Funds"
+  },
+  {
+    id: 'p5',
+    title: "Borehole Maintenance",
+    image: "/Shalompics/IMG-20251224-WA0016.jpg",
+    progress: 30,
+    needed: "$1,200",
+    description: "Essential repairs to maintain consistent clean water supply.",
+    status: "In Progress"
+  },
+  {
+    id: 'p6',
+    title: "Vocational Toolkits",
+    image: "/Shalompics/vocational_equipment.png",
+    progress: 5,
+    needed: "$4,500",
+    description: "Acquiring modern sewing machines and carpentry tools for students.",
+    status: "Pending Funds"
+  },
+  {
+    id: 'p7',
+    title: "Computer Lab Expansion",
+    image: "/Shalompics/computer_lab.png",
+    progress: 55,
+    needed: "$8,000",
+    description: "Adding 10 more computers to support the Digital Literacy Lab.",
+    status: "In Progress"
+  },
+  {
+    id: 'p8',
+    title: "School Bus Maintenance",
+    image: "/Shalompics/IMG-20251224-WA0008.jpg",
+    progress: 40,
+    needed: "$2,500",
+    description: "Ensuring safe transportation for students during field trips and outreach.",
+    status: "In Progress"
+  },
+  {
+    id: 'p9',
+    title: "Music Equipment Set",
+    image: "/Shalompics/IMG-20251224-WA0015.jpg",
+    progress: 15,
+    needed: "$3,000",
+    description: "New drums, keyboards and sound systems for our creative arts program.",
+    status: "Pending Funds"
+  },
+  {
+    id: 'p10',
+    title: "Science Lab Setup",
+    image: "/Shalompics/school_farm.png",
+    progress: 2,
+    needed: "$12,000",
+    description: "Foundation for a modern science laboratory for advanced primary studies.",
+    status: "Pending Funds"
   }
 ];
